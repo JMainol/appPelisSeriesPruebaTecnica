@@ -1,0 +1,71 @@
+<div class="container main-container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <input [(ngModel)]="buscar"
+                       name="buscar"
+                       (keyup)="buscarPelicula()"
+                       type="text"
+                       class="form-control"
+                       placeholder="Buscar película o serie">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group input-icons">
+              <i class="fas fa-heading fa-lg icon"></i>
+              <input [(ngModel)]="searchText"
+                       name="search-text"
+                       id="search-text"
+                       aria-describedby="search-text"
+                       type="text"
+                       class="form-control input-field"
+                       placeholder="Filtra por titulo"
+                       autofocus>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group input-icons">
+              <i class="fas fa-calendar-alt fa-lg icon"></i>
+                <input [(ngModel)]="searchYear"
+                       name="search-year"
+                       id="search-year"
+                       aria-describedby="search-year"
+                       type="text"
+                       class="form-control input-field"
+                       placeholder="Filtra por año"
+                       autofocus>
+            </div>
+        </div>
+    </div>
+
+    <app-loading *ngIf="loading"></app-loading>
+
+    <div class="row mt-5 animated fadeIn">
+        <div class="card-columns">
+  
+          <div class="card" *ngFor="let pelicula of peliculas | filterTitle: searchText | filterYear: searchYear">
+            <img [src]="pelicula.Poster | peliculaPoster" class="card-img-top" [alt]="pelicula.original_title">
+            <div class="card-body">
+              <h5 class="card-title text-center">{{ pelicula.Title }} <span class="badge badge-info">{{ pelicula.Year }}</span></h5>
+              <button type="button"
+                      [routerLink]="['/detalle', pelicula.imdbID]"
+                      class="btn btn-outline-info btn-block">
+                      Ver más...
+              </button>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+
+
+
+
+</div>

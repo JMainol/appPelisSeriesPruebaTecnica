@@ -1,0 +1,28 @@
+<app-loading *ngIf="loading"></app-loading>
+
+
+<div *ngIf="pelicula"
+     class="container main-container animated fadeIn fast">
+
+     <div class="row d-flex justify-content-center">
+        <div class="col-sm-6 col-md-4"> 
+            <div class="card">
+                <img [src]="pelicula.Poster | peliculaPoster" class="card-img-top" [alt]="">
+                <div class="card-body">
+                <h5 class="card-title text-center">{{ pelicula.Title }} <span class="badge badge-info">{{ pelicula.Year }}</span></h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-center"><i class="fas fa-calendar-alt fa-lg"></i>{{ pelicula.Released }}</li>
+                    <li class="list-group-item text-center"><i class="fas fa-clock fa-lg"></i>{{ pelicula.Runtime }}</li>
+                    <li class="list-group-item text-center"><i class="fas fa-file-video fa-lg"></i>{{ pelicula.Genre }}</li>
+                    <li class="list-group-item text-center"><i class="fas fa-user-shield fa-lg"></i>{{ pelicula.Director }}</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
